@@ -1,18 +1,20 @@
 from random import randrange
+from time import time
 from radix_sort import radix_sort
-# test = [randrange(1, 100000) for _ in range(50000)]
-# mx_length = len(str(max(test)))
-# test = list(map(lambda x: "0" * (mx_length - len(str(x))) + str(x) if len(str(x)) < mx_length else str(x), test ))
-# mx_length -= 1
-# while mx_length > -1:
-#     test = sorted(test, key=lambda x: x[mx_length])
-#     mx_length -= 1
-# for index in range(len(test)):
-#     num = list(test[index])
-#     while num[0] == '0':
-#         num.pop(0)
-#     test[index] = float(''.join(test[index]))
+from radix_sort2 import radix_sort2, counting_sort_radix
 
-test = [randrange(1, 100000) for _ in range(10)]
-test = radix_sort(test)
-print(test)
+test = [randrange(1, 10*4) for _ in range(10**6)]
+
+# comparing two versions of radix sort
+# complexity of first version pity is n log n, but the concept the same as in normal radix sort with complexity n * d
+
+print(f'Testing radix sort with complexity n log n')
+start1 = time()
+radix_sort(test)
+print(f'Ends with {time() - start1} seconds')
+
+print(f'Testing radix sort with complexity n * d')
+start2 = time()
+radix_sort2(test)
+print(f'Ends with {time() - start2} seconds')
+
