@@ -1,20 +1,15 @@
 from random import randrange
 from time import time
 from radix_sort import radix_sort
-from radix_sort2 import radix_sort2, counting_sort_radix
+from radix_sort2 import radix_sort2
 
-test = [randrange(1, 10*4) for _ in range(10**6)]
 
-# comparing two versions of radix sort
-# complexity of first version pity is n log n, but the concept the same as in normal radix sort with complexity n * d
-
-print(f'Testing radix sort with complexity n log n')
-start1 = time()
+test = [randrange(10**20, 10**20 + 10**5) for _ in range(10**6)]
+print('starting sort...')
+start = time()
 radix_sort(test)
-print(f'Ends with {time() - start1} seconds')
+print(f'radix sort {time() - start} seconds')
 
-print(f'Testing radix sort with complexity n * d')
-start2 = time()
+start = time()
 radix_sort2(test)
-print(f'Ends with {time() - start2} seconds')
-
+print(f'radix sort 2 {time() - start} seconds ')
