@@ -1,4 +1,5 @@
-from random import randrange
+
+
 from helpers import reformat
 def msd(arr):
     mx = len(str(max(arr)))
@@ -18,6 +19,3 @@ def msd_(array, mx, index=0):
         for bucket in buckets:
             answer.extend(msd_(bucket, mx, index + 1))
         return answer
-
-test = [randrange(1, 10002323) for _ in range(10)]
-print(msd(test))
